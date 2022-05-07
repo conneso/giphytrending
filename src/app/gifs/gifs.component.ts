@@ -13,8 +13,6 @@ export class GifsComponent implements OnInit {
   subscription: Subscription = new Subscription;
   ShowGifs: any;
 
-
-
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
@@ -25,6 +23,9 @@ export class GifsComponent implements OnInit {
     this.dataService.getTrendingGifs().then(rs => {
       this.Gifs = rs.data;
     });
+    this.dataService.gifs.subscribe(res=>{
+      this.Gifs = res.data;
+    })
 
   }
   ngOnDestroy() {

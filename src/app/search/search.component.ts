@@ -7,15 +7,18 @@ import { DataService } from '../data.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  gifs : any;
+  gifs: any;
 
-  constructor(private dataService : DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
-  search(search : string){
-    if(search !== ''){
-      this.dataService.searchGifs(search);
+  search(search: string) {
+    if (search !== '') {
+      this.dataService.searchGifs(search).then(res => {
+        this.dataService.gifs.next(res);
+      }).catch(e => {
+      });
 
     }
 

@@ -1,4 +1,4 @@
-<div class="gifs" *ngIf="Gifs.length!=1;else Description">
+<div class="gifs" *ngIf="Gifs && Gifs.length!=1;else Description">
 
     <div class="gif" *ngFor="let gif of Gifs">
         <img [src]="gif.images.downsized.url" alt="Image" (click)="ShowInforGifs(gif.id)">

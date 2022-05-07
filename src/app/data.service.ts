@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { GiphyFetch } from '@giphy/js-fetch-api';
+import { GiphyFetch, TrendingOptions } from '@giphy/js-fetch-api';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +24,15 @@ export class DataService {
     return data;
   }
   searchGifs(search: string) {
-    return this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=${environment.giphyApiKey}&q=${search}&limit=50`)
-      .subscribe((respone: any) => {
-        this.gifs.next(respone.data);
-      });
+    // return this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=${environment.giphyApiKey}&q=${search}&limit=50`)
+    //   .subscribe((respone: any) => {
+    //     this.gifs.next(respone.data);
+    //   });
+    const gf = new GiphyFetch(`${environment.giphyApiKey}`);
+    // fetch 10 gifs
+    const data = gf.search(search, { sort: 'relevant', lang: 'es', limit: 10, offset: 10, type: 'gifs' });
+    return data;
+
   }
   getGiffs() {
     return this.gifs.asObservable();
