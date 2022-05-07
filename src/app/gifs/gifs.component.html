@@ -1,0 +1,24 @@
+<div class="gifs" *ngIf="Gifs.length!=1;else Description">
+
+    <div class="gif" *ngFor="let gif of Gifs">
+        <img [src]="gif.images.downsized.url" alt="Image" (click)="ShowInforGifs(gif.id)">
+
+    </div>
+
+</div>
+<ng-template #Description>
+    <div class="gifs">
+        <div class="gif ShowInfor" *ngFor="let gif of Gifs">
+            <div class="img_Show">
+                <img [src]="gif.images.downsized.url" alt="Image">
+            </div>
+            <div class="img_Description">
+                <p>Title: {{gif.title}}</p>
+
+                <p>UserName: {{gif.username}}</p>
+
+                <p>Rating: {{gif.rating}}</p>
+            </div>
+        </div>
+    </div>
+</ng-template>

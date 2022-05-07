@@ -1,0 +1,12 @@
+<!--<p-toast></p-toast>-->
+
+<div class="card">
+  <h5>Upload Gifs</h5>
+  <p-fileUpload name="demo[]" [url]="url" (onUpload)="onUpload({event : $event})" [multiple]="true" >
+    <ng-template pTemplate="content">
+      <ul *ngIf="uploadedFiles.length">
+        <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+      </ul>
+    </ng-template>
+  </p-fileUpload>
+</div>

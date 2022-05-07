@@ -1,0 +1,21 @@
+.gifs {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.gif img {
+    max-width: 250px;
+}
+
+.ShowInfor {
+    display: contents;
+    width: 1000px;
+}
+
+.img_Description {
+    font-weight: 400;
+    color: brown;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
